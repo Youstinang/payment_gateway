@@ -129,11 +129,12 @@ node index.js
 ```
 
 Access the payment form by navigating to `http://localhost:3000` in your web browser 
-![1](https://github.com/Youstinang/payment_gateway/assets/162867385/82df44d5-a6d1-4b3d-aa7d-caa717f2ded5)
+![1](https://github.com/Youstinang/payment_gateway/assets/162867385/20eea0e7-c420-4b5e-ad05-be2d95a0a9af)
 
 OR check it in postman :
 
 ![image](https://github.com/Youstinang/payment_gateway/assets/162867385/29a1cc48-2161-443b-9c47-b94fc00612a3)
 
 Database Saving Test: 
-![2](https://github.com/Youstinang/payment_gateway/assets/162867385/7a0bd999-b8b1-4d96-87e2-18240d935d34)
+![2](https://github.com/Youstinang/payment_gateway/assets/162867385/142ed00b-e57c-4b47-84e4-ec198da158a6)
+
