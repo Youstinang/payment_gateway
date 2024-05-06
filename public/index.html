@@ -1,0 +1,83 @@
+<!DOCTYPE html> <!-- Defines the document type and version of HTML which is HTML 5 -->
+<html lang="en"> <!-- Starts the HTML document and specifies the language as English -->
+<head> <!-- Contains metadata and other resources like CSS and scripts for the webpage -->
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 which includes most characters from all languages -->
+    <title>Payment Form</title> <!-- Sets the title of the webpage that appears in the browser tab -->
+    <style>
+         /* Internal CSS styling starts here */
+        body {
+            font-family: Arial, sans-serif; /* Sets the font of the text in the body */
+            background-color: #f4f4f4; /* Sets the background color of the webpage */
+            margin: 0; /* Removes margin around the body */
+            padding: 0; /* Removes padding around the body */
+        }
+        .container {
+            max-width: 400px; /* Sets maximum width of container to 400px */
+            margin: 50px auto; /* Centers the container and gives top and bottom margin */
+            background-color: #fff; /* Sets background color of the container to white */
+            border-radius: 5px; /* Rounds the corners of the container */
+            padding: 20px; /* Adds padding inside the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a light shadow around the container */
+        }
+        h1 {
+            text-align: center; /* Centers the heading inside the container */
+        }
+        form {
+            display: flex; /* Uses Flexbox for layout */
+            flex-direction: column; /* Stacks the form items vertically */
+        }
+        input[type="text"] {
+            margin-bottom: 10px; /* Adds space below each input */
+            padding: 10px; /* Adds space inside each input */
+            border: 1px solid #ccc; /* Sets the border color of input */
+            border-radius: 5px; /* Rounds the corners of input fields */
+        }
+        button[type="submit"] {
+            padding: 10px; /* Adds padding inside the button */
+            background-color: #007bff; /* Sets background color of the button */
+            color: #fff; /* Sets the text color inside the button */
+            border: none; /* Removes border of the button */
+            border-radius: 5px; /* Rounds the corners of the button */
+            cursor: pointer; /* Shows a pointer cursor when hovering over the button */
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Changes background color of the button when hovered */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Includes jQuery for easier HTML manipulation and AJAX -->
+</head>
+<body>
+    <div class="container"> <!-- Container for the payment form -->
+        <h1>Payment Form</h1> <!-- Heading of the form -->
+        <form id="paymentForm"> <!-- Form element with an ID to be referenced in JavaScript -->
+            <input type="text" name="cardNumber" placeholder="Card Number" required> <!-- Input for card number -->
+            <input type="text" name="cvv" placeholder="CVV" required> <!-- Input for CVV -->
+            <input type="text" name="cardHolderName" placeholder="Card Holder Name" required> <!-- Input for card holder's name -->
+            <input type="text" name="expirationDate" placeholder="Expiration Date (MM/YYYY)" required> <!-- Input for expiration date -->
+            <button type="submit">Submit</button> <!-- Submit button for the form -->
+        </form>
+    </div>
+
+    <script>
+        $('#paymentForm').submit(function(event) { // jQuery event handler for form submission ( This line tells the browser to execute the following code when the form with the ID paymentForm is submitted)
+            event.preventDefault(); // Prevents the default form submission action (This line prevents the form from being submitted in the usual way, which would cause the page to reload.)
+            $.ajax({ //This line initiates an Ajax request, which allows JavaScript to communicate with the server without reloading the page.
+                url: '/submit-card', // URL to which the form data will be sent (This line specifies the URL where the form data will be sent. In this case, it's /submit-card, which is a route on the server that handles credit card submissions)
+                method: 'POST', // HTTP method used to send the data ( This line indicates that the data will be sent using the HTTP POST method, which is commonly used for submitting form data)
+                data: { // Data to be sent to the server(This line starts an object that contains the data to be sent to the server)
+                    cardNumber: $('input[name="cardNumber"]').val(), // Gets the value of card number input
+                    cvv: $('input[name="cvv"]').val(), // Gets the value of CVV input
+                    cardHolderName: $('input[name="cardHolderName"]').val(), // Gets the value of card holder name input
+                    expirationDate: $('input[name="expirationDate"]').val() // Gets the value of expiration date input
+                },
+                success: function(response) { // Function to handle a successful response (This line specifies a function to be executed if the Ajax request is successful)
+                    alert(response.message); // Alerts the response message ( This line displays an alert with the message received from the server. This message could indicate whether the submission was successful or if there was an error)
+                },
+                error:function(xhr) { // Function to handle errors (This line specifies a function to be executed if the Ajax request encounters an error)
+                    alert(xhr.responseText); // Alerts the error message from the server (This line displays an alert with the error message received from the server. This message could provide details about what went wrong during the submission process)
+                }
+            });
+        });
+    </script>
+</body>
+</html>
