@@ -133,7 +133,8 @@ Access the payment form by navigating to `http://localhost:3000` in your web bro
 
 OR check it in postman :
 
-![image](https://github.com/Youstinang/payment_gateway/assets/162867385/29a1cc48-2161-443b-9c47-b94fc00612a3)
+![image](https://github.com/Youstinang/payment_gateway/assets/162867385/53ed4948-2709-477d-9758-b37c6e8467c2)
+
 
 Database Saving Test: 
 ![2](https://github.com/Youstinang/payment_gateway/assets/162867385/142ed00b-e57c-4b47-84e4-ec198da158a6)
